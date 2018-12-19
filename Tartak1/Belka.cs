@@ -19,6 +19,7 @@ namespace Tartak1
 
         public Belka()
         {
+            this.items = new List<double>();
         }
 
         public Boolean put(double itemSize)
