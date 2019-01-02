@@ -6,13 +6,11 @@ namespace Tartak1
 {
     public static class ExtensionClass
     {
-        public static List<T> CopyList<T>(this List<T> lst)
+        public static List<T> CopyList<T>(this List<T> lst) where T : ICloneable
         {
             List<T> lstCopy = new List<T>();
-            foreach (ICloneable item in lst.OfType<ICloneable>())
-            {
-                lstCopy.Add((T)item.Clone());
-            }
+
+            lstCopy.AddRange(lst.Select(i => (T)i.Clone()));
 
             return lstCopy;
         }
