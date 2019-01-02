@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Tartak1
 {
     public class Belka
-    {
-        
+    {  
         public double? size;
         public double empty;
         public List<double> items;
@@ -22,7 +20,7 @@ namespace Tartak1
             this.items = new List<double>();
         }
 
-        public Boolean put(double itemSize)
+        public bool put(double itemSize)
         {
             const double chainsaw = 0.05;
             if (itemSize + chainsaw > this.empty)

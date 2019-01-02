@@ -54,22 +54,22 @@ namespace Tartak1
                 }
 
                 MessageBox.Show($"Liczba elementów: {stocks.Count}");
-
-
             }
         }
 
         private void BestFit_Click(object sender, EventArgs e)
         {
+            List<Stock> s = this.stocks.CopyList();
+
             const double chainsaw = 0.05;
             List<Belka> bins = new List<Belka>
             {
                 new Belka(this.ContSize)
             };
 
-            for (var i = 0; i < stocks.Count; ++i)
+            for (var i = 0; i < s.Count; ++i)
             {
-                Stock stock = stocks[i];
+                Stock stock = s[i];
                 if (stock.size > this.ContSize)
                 { 
                     continue;
@@ -104,21 +104,23 @@ namespace Tartak1
             int b = 0;
             foreach (Belka bin in bins)
             {
-                dataGridView1.Rows.Add(++b, String.Join("; ", bin.items), String.Format("{0:0.00}", bin.empty), String.Format("{0:0.00%}", (1 - bin.empty/ this.ContSize)));
+                dataGridView1.Rows.Add(++b, string.Join("; ", bin.items), string.Format("{0:0.00}", bin.empty), string.Format("{0:0.00%}", (1 - bin.empty/ this.ContSize)));
             }
             dataGridView1.Refresh();
         }
 
         private void WorstFit_Click(object sender, EventArgs e)
         {
+            List<Stock> s = this.stocks.CopyList();
+
             List<Belka> bins = new List<Belka>
             {
                 new Belka(this.ContSize)
             };
 
-            for (var i = 0; i < stocks.Count; ++i)
+            for (var i = 0; i < s.Count; ++i)
             {
-                Stock stock = stocks[i];
+                Stock stock = s[i];
                 if (stock.size > this.ContSize)
                 { 
                     continue;
@@ -152,7 +154,7 @@ namespace Tartak1
             int b = 0;
             foreach (Belka bin in bins)
             {
-                dataGridView1.Rows.Add(++b, String.Join("; ", bin.items), String.Format("{0:0.00}", bin.empty), String.Format("{0:0.00%}", (1 - bin.empty / this.ContSize)));
+                dataGridView1.Rows.Add(++b, string.Join("; ", bin.items), string.Format("{0:0.00}", bin.empty), string.Format("{0:0.00%}", (1 - bin.empty / this.ContSize)));
             }
             dataGridView1.Refresh();
         }
